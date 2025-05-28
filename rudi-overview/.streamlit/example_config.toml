@@ -1,0 +1,13 @@
+[server]
+
+maxUploadSize = 500
+port = 5000
+
+[browser]
+
+gatherUsageStats = false
+serverAddress = "localhost"
+
+
+[client]
+showSidebarNavigation = false
