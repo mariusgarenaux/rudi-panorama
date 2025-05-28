@@ -1,0 +1,51 @@
+backports.tarfile==1.2.0
+importlib-metadata==8.0.0
+jaraco.collections==5.1.0
+pip-chill==1.0.3
+platformdirs==4.2.2
+rudi-node-read==0.2.4
+streamlit==1.45.1
+tomli==2.0.1
+# altair==5.5.0 # Installed as dependency for streamlit
+# attrs==25.3.0 # Installed as dependency for jsonschema, referencing
+# autocommand==2.2.2 # Installed as dependency for jaraco.text
+# blinker==1.9.0 # Installed as dependency for streamlit
+# cachetools==5.5.2 # Installed as dependency for streamlit
+# certifi==2025.4.26 # Installed as dependency for requests
+# charset-normalizer==3.4.2 # Installed as dependency for requests
+# click==8.2.1 # Installed as dependency for streamlit
+# gitdb==4.0.12 # Installed as dependency for gitpython
+# gitpython==3.1.44 # Installed as dependency for streamlit
+# idna==3.10 # Installed as dependency for requests
+# inflect==7.3.1 # Installed as dependency for jaraco.text
+# jaraco.context==5.3.0 # Installed as dependency for jaraco.text
+# jaraco.functools==4.0.1 # Installed as dependency for jaraco.text
+# jaraco.text==3.12.1 # Installed as dependency for jaraco.collections
+# jinja2==3.1.6 # Installed as dependency for altair, pydeck
+# jsonschema==4.24.0 # Installed as dependency for altair
+# jsonschema-specifications==2025.4.1 # Installed as dependency for jsonschema
+# markupsafe==3.0.2 # Installed as dependency for jinja2
+# more-itertools==10.3.0 # Installed as dependency for inflect, jaraco.functools, jaraco.text
+# narwhals==1.41.0 # Installed as dependency for altair
+# numpy==2.2.6 # Installed as dependency for pandas, pydeck, streamlit
+# packaging==24.2 # Installed as dependency for altair, streamlit
+# pandas==2.2.3 # Installed as dependency for streamlit
+# pillow==11.2.1 # Installed as dependency for streamlit
+# protobuf==6.31.0 # Installed as dependency for streamlit
+# pyarrow==20.0.0 # Installed as dependency for streamlit
+# pydeck==0.9.1 # Installed as dependency for streamlit
+# python-dateutil==2.9.0.post0 # Installed as dependency for pandas
+# pytz==2025.2 # Installed as dependency for pandas
+# referencing==0.36.2 # Installed as dependency for jsonschema, jsonschema-specifications
+# requests==2.32.3 # Installed as dependency for streamlit
+# rpds-py==0.25.1 # Installed as dependency for jsonschema, referencing
+# six==1.17.0 # Installed as dependency for python-dateutil
+# smmap==5.0.2 # Installed as dependency for gitdb
+# tenacity==9.1.2 # Installed as dependency for streamlit
+# toml==0.10.2 # Installed as dependency for streamlit
+# tornado==6.5.1 # Installed as dependency for streamlit
+# typeguard==4.3.0 # Installed as dependency for inflect
+# typing-extensions==4.13.2 # Installed as dependency for altair, referencing, streamlit, typeguard
+# tzdata==2025.2 # Installed as dependency for pandas
+# urllib3==2.4.0 # Installed as dependency for requests
+# zipp==3.19.2 # Installed as dependency for importlib-metadata
