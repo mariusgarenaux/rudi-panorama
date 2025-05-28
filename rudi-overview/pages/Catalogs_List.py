@@ -32,18 +32,19 @@ def add_node():
             f"Could not add the given url : '{new_node_url}' because RudiNodeReader could not be loaded : '{e}'"
         )
         return
-    st.session_state["nodes_url_list"].append(new_node_url)
-    initialize_node_readers()
+    else:
+        st.session_state["nodes_url_list"][new_node_url] = nr_test
+        initialize_node_readers()
 
 
 if __name__ == "__main__":
     initialize_node_readers()
     st.markdown("# Catalogs List")
 
-    for each_node_reader in st.session_state.all_node_readers:
-        show_node_summary(each_node_reader)
-
     with st.container(border=True):
         st.markdown("#### Add a node")
         st.text_input("Node url :", key="added_node_url")
         st.button("Click here to add", on_click=add_node)
+
+    for each_node_reader in st.session_state.all_node_readers.values():
+        show_node_summary(each_node_reader)
