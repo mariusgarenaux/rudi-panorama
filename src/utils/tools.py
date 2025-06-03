@@ -33,6 +33,8 @@ CONFIG = get_config_file()
 
 @st.cache_data
 def get_logging_level():
+    if "logging_level" not in CONFIG:
+        return logging.INFO
     match CONFIG["logging_level"]:
         case "INFO":
             return logging.INFO
