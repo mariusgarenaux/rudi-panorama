@@ -39,6 +39,7 @@ Example :
 
 ```yaml
 nodes_url_list:
+  - https://airbreizh.rudi.irisa.fr
   - https://rm.fenix.rudi-univ-rennes1.fr
   - https://logistica.fenix.rudi-univ-rennes1.fr
 ```
