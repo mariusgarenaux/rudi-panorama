@@ -25,11 +25,11 @@ pip install -r requirements.txt
 __Finally__ start streamlit server :
 
 ```bash
-cd rudi-overview
-streamlit run Home.py
+cd src
+streamlit run RUDI_Panorama.py
 ```
 
-RUDI-overview can now be accessed from http://localhost:5000 (or other port if you specify an other one in [.streamlit/config.toml](rudi-overview/.streamlit/config.toml)).
+RUDI Panorama can now be accessed from http://localhost:5000 (or other port if you specify an other one in [.streamlit/config.toml](rudi-overview/.streamlit/config.toml)).
 
 ## Configuration
 

@@ -106,6 +106,10 @@ def display_toggle_select_all(sidebar):
         )
 
 
+def keep_key(key: str):
+    st.session_state[key] = st.session_state[f"_{key}"]
+
+
 def display_nodes_names_with_checkbox(sidebar: bool = False):
     display_toggle_select_all(sidebar)
     for each_node_url in st.session_state.nodes_url_list:
@@ -117,8 +121,11 @@ def display_nodes_names_with_checkbox(sidebar: bool = False):
                     if f"sidebar_checkbox {each_node_url}" in st.session_state
                     else False
                 ),
-                key=f"sidebar_checkbox {each_node_url}",
+                key=f"_sidebar_checkbox {each_node_url}",
+                on_change=keep_key,
+                kwargs={"key": f"sidebar_checkbox {each_node_url}"},
             )
+            keep_key(f"sidebar_checkbox {each_node_url}")
         else:
             st.checkbox(
                 label=each_node_url,
