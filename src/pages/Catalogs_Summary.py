@@ -1,9 +1,19 @@
 import streamlit as st
-from utils.node_reader import initialize_node_readers
+
+st.set_page_config(layout="wide", page_icon="🔭")
+
+from utils.node_reader import (
+    load_all_checked_node_readers,
+    display_nodes_names_with_checkbox,
+    initialize_node_list,
+    load_one_node_reader,
+)
 from rudi_node_read.rudi_node_reader import RudiNodeReader
 
 
-def show_node_summary(node_reader: RudiNodeReader):
+def show_node_summary(node_url: str):
+    load_one_node_reader(node_url)
+    node_reader = st.session_state["all_node_readers"][node_url]
     with st.container(border=True):
         st.markdown(
             f"""
@@ -34,17 +44,21 @@ def add_node():
         return
     else:
         st.session_state["nodes_url_list"][new_node_url] = nr_test
-        initialize_node_readers()
+        load_all_checked_node_readers()
 
 
 if __name__ == "__main__":
-    initialize_node_readers()
-    st.markdown("# Catalogs List")
+    st.markdown("# Catalogs Summary ")
+    initialize_node_list()
+    st.markdown("Here is a summary of checked nodes. See sidebar to check nodes.")
+    # with st.container(border=True):
+    #     st.markdown("#### Add a node")
+    #     st.text_input("Node url :", key="added_node_url")
+    #     st.button("Click here to add", on_click=add_node)
 
-    with st.container(border=True):
-        st.markdown("#### Add a node")
-        st.text_input("Node url :", key="added_node_url")
-        st.button("Click here to add", on_click=add_node)
+    display_nodes_names_with_checkbox(sidebar=True)
+    load_all_checked_node_readers()
 
-    for each_node_reader in st.session_state.all_node_readers.values():
-        show_node_summary(each_node_reader)
+    for each_node_url in st.session_state["nodes_url_list"]:
+        if st.session_state[f"sidebar_checkbox {each_node_url}"]:
+            show_node_summary(each_node_url)
