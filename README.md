@@ -22,7 +22,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-__Finally__ start streamlit server :
+After you set up a configuration file at [conf/conf.yaml](conf/conf.yaml) (see [conf/example_conf.yaml](conf/example_conf.yaml)), you can __finally__ start streamlit server :
 
 ```bash
 cd src
