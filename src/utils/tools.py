@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import streamlit as st
+import math
 
 
 # ---------------------------
@@ -62,3 +63,17 @@ def get_logger(name: str):
 
 
 logger = get_logger("tools")
+
+
+def get_color_from_str(x: str, reduce: bool = False) -> str:
+    number = sum([ord(each_char) for each_char in x])
+    if reduce:
+        r = abs(math.sin(number + 1))
+        g = abs(math.sin(number + 2))
+        b = abs(math.sin(number + 3))
+
+    else:
+        r = int(abs(math.sin(number + 1)) * 256)
+        g = int(abs(math.sin(number + 2)) * 256)
+        b = int(abs(math.sin(number + 3)) * 256)
+    return "#%02x%02x%02x" % (r, g, b)

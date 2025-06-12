@@ -1,14 +1,15 @@
 import streamlit as st
+import os
 
-st.set_page_config(layout="wide", page_icon="🔭")
+st.set_page_config(page_title="RUDI Panorama", layout="wide", page_icon="🔭")
 
 from utils.node_reader import (
     load_all_checked_node_readers,
     initialize_node_list,
     load_one_node_reader,
     display_nodes_names_with_checkbox,
+    initialize_nodes_colors,
 )
-from rudi_node_read.rudi_node_reader import RudiNodeReader
 
 
 def change_body_checkbox(node_url):
@@ -32,19 +33,33 @@ def display_all_metadatas():
 
 
 def display_metadata_catalog(each_node_url: str):
-    st.divider()
-    st.markdown(f"### {each_node_url}")
-    st.divider()
     load_one_node_reader(each_node_url)
-    node_reader = st.session_state["all_node_readers"][each_node_url]
+    node_reader_boosted = st.session_state["all_node_readers"][each_node_url]
+    node_reader = node_reader_boosted["node_reader"]
+
+    st.html(
+        "<style>"
+        "a, a:visited, a:hover, a:active {color: inherit;}"
+        "</style>"
+        f"<h2 style='color:{node_reader_boosted['color']}'><a href='{each_node_url}'>{each_node_url}</a></h3>"
+    )
 
     if node_reader.metadata_count == 0:
         st.write(f"No metadata for {node_reader.server_url}")
         return
     for each_metadata in node_reader.metadata_list:
         nice_medias = get_nice_medias(each_metadata)
+        metadata_url = os.path.join(
+            node_reader.server_url, "catalog/v1/resources", each_metadata["global_id"]
+        )
         with st.container(border=True):
-            st.markdown(f"#### :green[{each_metadata['resource_title']}]")
+            st.html(
+                "<style>"
+                "a, a:visited, a:hover, a:active {color: inherit;}"
+                "</style>"
+                f"<h3 style='color:{node_reader_boosted['color']}'><a href='{metadata_url}'>{each_metadata['resource_title']}</a></h3>"
+            )
+            # st.markdown(f"#### [:green[]]({metadata_url})")
             st.markdown(
                 f":orange[_**Summary**_] : {each_metadata['summary'][0]['text']}"
             )
@@ -89,11 +104,37 @@ def sort_metadata():
         sort_by_alphabetical_order()
 
 
+import base64
+
+
+def get_base64(bin_file):
+    with open(bin_file, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+
+def set_background(png_file):
+    bin_str = get_base64(png_file)
+    page_bg_img = (
+        """
+    <style>
+    .stApp {
+    background-image: url("data:image/png;base64,%s");
+    background-size: cover;
+    }
+    </style>
+    """
+        % bin_str
+    )
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+
+
 if __name__ == "__main__":
     initialize_node_list()
-    display_nodes_names_with_checkbox(sidebar=True)
+    initialize_nodes_colors()
+    display_nodes_names_with_checkbox()
     load_all_checked_node_readers()
-    st.markdown("# RUDI Panorama 🔭")
+    st.markdown("# :rainbow[RUDI Panorama 🔭]")
 
     st.markdown(
         "This website allows you to have a panorama of metadatas availables on a list of RUDI nodes."
