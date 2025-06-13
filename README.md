@@ -1,8 +1,20 @@
-# RUDI Panorama 🔭
+![rudi-panorama](rudi-panorama-title.png)
 
 This is a light python web server based on streamlit whose aim is to easily visualize all the metadata from a list of RUDI nodes.
 
 Since all RUDI nodes publish open-data, one can access all the (meta)data of a list of nodes. Hence, no data is stored here, we simply use the [rudi-node-read](https://github.com/OlivierMartineau/rudi-node-read) library to access all metadata catalogs of RUDI nodes.
+
+![main](rudi-panorama-main.png)
+
+## Catalogs statistics and graph of keywords
+
+You can visualize basic statistics about the number of metadata on each node :
+
+![stats](rudi-panorama-statistics.png)
+
+And you can load a sentence-transformer model to visualize 2D embeddings (dimensionnality reduction is made with Principal Components Analysis) of keywords accross all nodes.
+
+![graph](rudi-panorama-graph.png)
 
 ## Getting started locally
 
